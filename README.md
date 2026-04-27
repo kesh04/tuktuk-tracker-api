@@ -13,11 +13,7 @@ This RESTful API provides real time tracking capabilities for three wheelers (tu
 - Swagger/OpenAPI Documentation
 - bcrypt for password hashing
 
-## Setup Instructions
 
-### Prerequisites
-- Node.js (v14 or higher)
-- MongoDB (local or cloud)
 
 ### Installation
 
