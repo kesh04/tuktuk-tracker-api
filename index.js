@@ -11,18 +11,11 @@ dotenv.config();
 
 connectDB();
 
-
-import './src/models/Province.js';
-import './src/models/District.js';
-import './src/models/PoliceStation.js';
-import './src/models/Vehicle.js';
-import './src/models/LocationPing.js';
-import './src/models/User.js';
-
 import authRoutes from './src/routes/authRoutes.js';
 import adminRoutes from './src/routes/adminRoutes.js';
 import vehicleRoutes from './src/routes/vehicleRoutes.js';
-
+import  policeStationRoutes from "./src/routes/policeStationRoutes.js"
+import locationRoutes     from './src/routes/locationRoutes.js';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -50,6 +43,10 @@ app.get('/', (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/vehicles', vehicleRoutes);
+app.use('/api/policestations', policeStationRoutes);
+app.use('/api/locations',       locationRoutes);
+
+
 
 app.use((req, res) => {
   res.status(404).json({ success: false, message: `Route ${req.originalUrl} not found` });
