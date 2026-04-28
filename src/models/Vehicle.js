@@ -3,24 +3,31 @@ import mongoose from 'mongoose';
 const vehicleSchema = new mongoose.Schema({
   registrationNumber: {
     type: String,
-    required: true,
+    required: [true, 'Registration number is required'],
     unique: true,
     uppercase: true,
     trim: true
   },
   ownerName: {
     type: String,
-    required: true
+    required: [true, 'Owner name is required'],
+    trim: true
   },
   ownerNic: {
     type: String,
-    required: true,
-    unique: true
+    required: [true, 'Owner NIC is required'],
+    unique: true,
+    trim: true
+  },
+  ownerPhone: {
+    type: String,
+    trim: true
   },
   deviceId: {
     type: String,
-    required: true,
-    unique: true
+    required: [true, 'Device ID is required'],
+    unique: true,
+    trim: true
   },
   status: {
     type: String,
@@ -30,7 +37,11 @@ const vehicleSchema = new mongoose.Schema({
   district: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'District',
-    required: true
+    required: [true, 'District is required']
+  },
+  policeStation: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'PoliceStation'
   },
   lastLocation: {
     type: {
@@ -39,7 +50,7 @@ const vehicleSchema = new mongoose.Schema({
       default: 'Point'
     },
     coordinates: {
-      type: [Number],
+      type: [Number], 
       default: [0, 0]
     },
     timestamp: {
@@ -47,11 +58,9 @@ const vehicleSchema = new mongoose.Schema({
       default: Date.now
     }
   }
-}, {
-  timestamps: true
-});
+}, { timestamps: true });
 
 vehicleSchema.index({ lastLocation: '2dsphere' });
-vehicleSchema.index({ registrationNumber: 1, deviceId: 1 });
+vehicleSchema.index({ district: 1, status: 1 });
 
 export default mongoose.model('Vehicle', vehicleSchema);

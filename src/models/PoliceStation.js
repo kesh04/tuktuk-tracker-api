@@ -3,20 +3,29 @@ import mongoose from 'mongoose';
 const policeStationSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true
+    required: [true, 'Police station name is required'],
+    trim: true
   },
   code: {
     type: String,
-    required: true,
-    unique: true
+    required: [true, 'Station code is required'],
+    unique: true,
+    uppercase: true,
+    trim: true
   },
   district: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'District',
-    required: true
+    required: [true, 'District is required']
   },
-  address: String,
-  contactNumber: String,
+  address: {
+    type: String,
+    trim: true
+  },
+  contactNumber: {
+    type: String,
+    trim: true
+  },
   location: {
     type: {
       type: String,
@@ -24,14 +33,11 @@ const policeStationSchema = new mongoose.Schema({
       default: 'Point'
     },
     coordinates: {
-      type: [Number],
-      required: true,
-      index: '2dsphere'
+      type: [Number], 
+      required: [true, 'Coordinates are required']
     }
   }
-}, {
-  timestamps: true
-});
+}, { timestamps: true });
 
 policeStationSchema.index({ location: '2dsphere' });
 
