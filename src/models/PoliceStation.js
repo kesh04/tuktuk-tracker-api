@@ -33,13 +33,11 @@ const policeStationSchema = new mongoose.Schema({
       default: 'Point'
     },
     coordinates: {
-      type: [Number],
+      type: [Number], 
       required: [true, 'Coordinates are required']
     }
   }
-}, {
-  timestamps: true
-});
+}, { timestamps: true });
 
 policeStationSchema.index({ location: '2dsphere' });
 

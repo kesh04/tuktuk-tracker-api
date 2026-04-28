@@ -22,8 +22,6 @@ const districtSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'PoliceStation'
   }]
-}, {
-  timestamps: true
-});
+}, { timestamps: true });
 
 export default mongoose.model('District', districtSchema);

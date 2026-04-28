@@ -61,8 +61,6 @@ const vehicleSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 vehicleSchema.index({ lastLocation: '2dsphere' });
-vehicleSchema.index({ registrationNumber: 1 });
-vehicleSchema.index({ deviceId: 1 });
 vehicleSchema.index({ district: 1, status: 1 });
 
 export default mongoose.model('Vehicle', vehicleSchema);
