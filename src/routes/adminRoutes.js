@@ -17,6 +17,7 @@ router.post('/provinces',       authorize('central_admin'), validateProvince, cr
 router.put('/provinces/:id',    authorize('central_admin'), validateMongoId('id'), updateProvince);
 router.delete('/provinces/:id', authorize('central_admin'), validateMongoId('id'), deleteProvince);
 
+// Districts
 router.get('/districts',        checkGeographicAccess, getDistricts);
 router.get('/districts/:id',    validateMongoId('id'), getDistrict);
 router.post('/districts',       authorize('central_admin'), validateDistrict, createDistrict);
