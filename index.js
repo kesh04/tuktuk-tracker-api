@@ -5,6 +5,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import rateLimit from 'express-rate-limit';
+import { setupSwagger } from './src/config/swagger.js';
 
 
 dotenv.config();
@@ -33,6 +34,10 @@ const limiter = rateLimit({
   message: 'Too many requests from this IP, please try again later.'
 });
 app.use('/api', limiter);
+
+
+
+setupSwagger(app);
 
 
 app.get('/', (req, res) => {
