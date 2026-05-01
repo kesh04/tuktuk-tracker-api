@@ -81,7 +81,7 @@ const OWNER_NAMES = [
   'Asanka Gurusinha','Sanath Jayasuriya','Muttiah Muralitharan','Kumar Sangakkara','Mahela Jayawardena'
 ];
 
-const REG_PREFIXES = ['CAA','CAB','CAC','CBD','CBC','CBE','CBF','CBG','CBH','CBI'];
+const REG_PREFIXES = ['AAA','AAB','AAC','AAD','AAE','AAF','AAG','AAH','AAI','AAJ'];
 
 export const randomBetween = (min, max) => Math.random() * (max - min) + min;
 export const randomInt    = (min, max) => Math.floor(randomBetween(min, max));
