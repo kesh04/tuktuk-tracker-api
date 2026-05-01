@@ -12,12 +12,14 @@ const options = {
         name: 'API Support'
       }
     },
-    servers: [
-      {
-        url: 'http://localhost:3000',
-        description: 'Development server'
-      }
-    ],
+   servers: [
+  {
+    url: process.env.NODE_ENV === 'production'
+      ? 'http://tuktuk-tracking-api-env.eba-2vamptqe.ap-southeast-1.elasticbeanstalk.com'
+      : 'http://localhost:3000',
+    description: process.env.NODE_ENV === 'production' ? 'Production server' : 'Development server'
+  }
+],
     components: {
       securitySchemes: {
         bearerAuth: {
