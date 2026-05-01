@@ -20,8 +20,11 @@ import locationRoutes     from './src/routes/locationRoutes.js';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-
-app.use(helmet());
+app.use(helmet({
+  contentSecurityPolicy: false,
+  crossOriginEmbedderPolicy: false,
+  crossOriginOpenerPolicy: false
+}));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

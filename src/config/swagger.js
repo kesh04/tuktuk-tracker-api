@@ -529,10 +529,12 @@ const swaggerSpec = swaggerJsdoc(options);
 
 export const setupSwagger = (app) => {
   app.use('/apidocs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
-    customCss: '.swagger ui .topbar { display: none }',
-    customSiteTitle: 'TukTuk Tracker API Docs'
+    customCss: '.swagger-ui .topbar { display: none }',
+    customSiteTitle: 'TukTuk Tracker API Docs',
+    swaggerOptions: {
+      persistAuthorization: true
+    }
   }));
-
 
   app.get('/apidocs.json', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
