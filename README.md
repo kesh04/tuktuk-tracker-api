@@ -1,7 +1,8 @@
 # 🚐 Sri Lanka Police — Three-Wheeler (Tuk-Tuk) Tracking System API
 
-> **NB6007CEM – Web API Development | BSc (Hons) Computing 2024.2P**
-> **Student ID:** COBSCCOMP242P-044 | **Coventry ID:** 16110315
+> ** BSc (Hons) Computing 2024.2P**
+> **Student ID:** COBSCCOMP242P-044
+> **Coventry ID:** 16110315
 
 ---
 
