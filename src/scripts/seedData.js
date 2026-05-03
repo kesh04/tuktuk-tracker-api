@@ -178,7 +178,33 @@ const seed = async () => {
       process.stdout.write(`\r   ${totalInserted} pings inserted (${vehicle.registrationNumber})    `);
     }
 
-    console.log(` ${totalInserted} total location pings created (10s intervals)`);
+    console.log(`\n ${totalInserted} total location pings created (10s intervals)`);
+
+
+    console.log('\n Updating lastLocation for all vehicles with their most recent ping...');
+    let updatedCount = 0;
+
+    for (const vehicle of activeVehicles) {
+      const latestPing = await LocationPing.findOne({ vehicle: vehicle._id })
+        .sort({ timestamp: -1 })
+        .select('location timestamp');
+
+      if (latestPing) {
+        await Vehicle.findByIdAndUpdate(vehicle._id, {
+          lastLocation: {
+            type: 'Point',
+            coordinates: latestPing.location.coordinates,
+            timestamp: latestPing.timestamp
+          }
+        });
+        updatedCount++;
+        process.stdout.write(`\r   ${updatedCount} vehicles lastLocation updated...    `);
+      }
+    }
+
+    console.log(`\n lastLocation updated for ${updatedCount} vehicles`);
+    console.log('   Now GET /api/locations/live & GET /api/vehicles/:id/location will return correct data!\n');
+
     console.log('   Login Credentials:');
     console.log('  central_admin    → admin@police.lk        / Admin@123');
     console.log('  provincial_admin → provincial@police.lk   / Provincial@123');
@@ -186,7 +212,7 @@ const seed = async () => {
     console.log('  viewer           → viewer@police.lk       / Viewer@123');
     console.log('   Swagger Docs → http://localhost:3000/apidocs');
     console.log('Completed !');
-    
+
     process.exit(0);
   } catch (error) {
     console.error(' error:', error.message);
