@@ -1,12 +1,12 @@
-# 🚐 Sri Lanka Police — Three-Wheeler (Tuk-Tuk) Tracking System API
+#  Sri Lanka Police — Three-Wheeler (Tuk-Tuk) Tracking System API
 
-> ** BSc (Hons) Computing 2024.2P**
+> BSc (Hons) Computing 2024.2P
 > **Student ID:** COBSCCOMP242P-044
 > **Coventry ID:** 16110315
 
 ---
 
-## 📌 Overview
+##  Overview
 
 A centralised, real-time RESTful API that enables Sri Lanka Police to track and monitor registered three-wheelers (tuk-tuks) across all 9 provinces and 25 districts. The system collects GPS-based location pings from registered tracking devices and provides authorised law enforcement personnel with:
 
